@@ -1,0 +1,27 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Datos
+    chapters:
+      - file: 01_datos_y_linea_base
+  - caption: Modelos y resultados
+    chapters:
+      - file: 02_clasificacion
+      - file: 03_regresion
+  - caption: Optimización
+    chapters:
+      - file: 04_optimizacion_hiperparametros
+      - file: 05_optimizacion_computacional
+  - caption: Evaluación y comparación
+    chapters:
+      - file: 06_evaluacion_clasificacion
+      - file: 07_evaluacion_regresion
+      - file: 08_interpretabilidad
+      - file: 09_comparacion_estadistica
+  - caption: Cierre
+    chapters:
+      - file: 10_conclusiones
+  - caption: Anexos
+    chapters:
+      - file: A1_ejecucion_del_estudio
+      - file: referencias

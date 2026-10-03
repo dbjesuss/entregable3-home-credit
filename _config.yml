@@ -1,0 +1,26 @@
+title: "Entregable 3 · Machine Learning sobre Home Credit"
+author: "Jesús David Barrios Valdes, Samuel David Chamorro Solorzano y Jacobo Londoño Baquero"
+copyright: "2026"
+only_build_toc_files: true
+
+execute:
+  execute_notebooks: "off"      # los notebooks se ejecutan a mano, en orden (ver intro)
+
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - amsmath
+
+exclude_patterns:
+  - ".venv"            # el entorno virtual vive en la raiz: sphinx no debe leerlo
+  - "_build"
+  - "_prueba/*"
+  - "cache/*"
+  - "datos/*"
+  - "resultados/*"
+  - "**.ipynb_checkpoints"
+
+sphinx:
+  config:
+    language: es
+    html_show_copyright: false

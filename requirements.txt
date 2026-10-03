@@ -1,0 +1,31 @@
+# Entorno del Entregable 3 - Python 3.10 o 3.12 (el estudio se ejecuto con 3.12 en Windows;
+# ver tambien requirements-lock-windows.txt).
+# Versiones exactas, verificadas juntas. Instalar con:  pip install -r requirements.txt
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+imbalanced-learn==0.14.0
+xgboost==3.0.5          # la rueda de Windows/Linux x86_64 incluye soporte CUDA (device='cuda')
+optuna==4.5.0
+deap==1.4.3
+shap==0.48.0
+lime==0.2.0.1
+faiss-cpu==1.12.0       # FAISS con GPU no se distribuye por pip para Windows
+statsmodels==0.14.5
+arch==7.2.0
+scikit-posthocs==0.11.4
+matplotlib==3.10.6
+seaborn==0.13.2
+pyarrow==21.0.0
+joblib==1.5.2
+threadpoolctl==3.6.0
+tqdm==4.67.1
+memory-profiler==0.61.0
+psutil==7.1.0
+ipykernel==6.30.1
+nbclient==0.10.2
+nbformat==5.10.4
+jupyter-book==1.0.4.post1
+# GPU para KNN (opcional, se instala aparte con INSTALAR_GPU.bat desde el indice de PyTorch con CUDA 12.6):
+#   torch==2.8.0  --index-url https://download.pytorch.org/whl/cu126

@@ -1,0 +1,25 @@
+# El repositorio solo incluye el libro (fuentes), el codigo y la tabla maestra.
+# Todo lo demas de la carpeta (scripts .bat, datos, caches, salidas regenerables) queda fuera.
+/*
+!/.gitignore
+!/README.md
+!/_config.yml
+!/_toc.yml
+!/intro.md
+!/10_conclusiones.md
+!/referencias.md
+!/*.ipynb
+!/src/
+!/correr_estudio.py
+!/correr_capitulos.py
+!/verificar_entorno.py
+!/requirements.txt
+!/requirements-lock-windows.txt
+!/resultados/
+/resultados/*
+!/resultados/tabla_maestra.csv
+!/resultados/tabla_maestra.parquet
+!/resultados/registro_pliegues.csv
+!/resultados/registro_pliegues.parquet
+__pycache__/
+.ipynb_checkpoints/
