@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Conclusiones &#8212; Entregable 3 · Machine Learning sobre Home Credit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_conclusiones';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Anexo A. Ejecución del estudio: bitácora, fallos y reparaciones" href="A1_ejecucion_del_estudio.html" />
+    <link rel="prev" title="Robustez y comparación estadística" href="09_comparacion_estadistica.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Entregable 3 · Machine Learning sobre Home Credit</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Entregable 3: modelos de Machine Learning para el riesgo de crédito de Home Credit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_datos_y_linea_base.html">Datos, EDA y línea base logística</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos y resultados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_clasificacion.html">Clasificación: 7 modelos x 4 balanceos x 4 optimizadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_regresion.html">Regresión: 7 modelos x 4 optimizadores sobre <code class="docutils literal notranslate"><span class="pre">TARGET</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Optimización</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04_optimizacion_hiperparametros.html">Optimización de hiperparámetros: comparación de los cuatro métodos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_optimizacion_computacional.html">Optimización computacional</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluación y comparación</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_evaluacion_clasificacion.html">Evaluación de los modelos de clasificación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_evaluacion_regresion.html">Evaluación de los modelos de regresión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_interpretabilidad.html">Interpretabilidad global y local: SHAP y LIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_comparacion_estadistica.html">Robustez y comparación estadística</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cierre</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Conclusiones</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anexos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A1_ejecucion_del_estudio.html">Anexo A. Ejecución del estudio: bitácora, fallos y reparaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencias.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/10_conclusiones.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conclusiones</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-modelo-ordena-mejor-el-riesgo">1. ¿Qué modelo ordena mejor el riesgo?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-aportan-el-balanceo-y-el-umbral">2. ¿Qué aportan el balanceo y el umbral?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-metodo-de-optimizacion-conviene-y-por-que">3. ¿Qué método de optimización conviene y por qué?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-optimizaciones-computacionales-fueron-decisivas">4. ¿Qué optimizaciones computacionales fueron decisivas?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificadores-y-regresores-sobre-el-mismo-objetivo">5. Clasificadores y regresores sobre el mismo objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-explica-el-riesgo">6. ¿Qué explica el riesgo?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitaciones">7. Limitaciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencia-externa-y-trabajo-futuro">8. Referencia externa y trabajo futuro</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conclusiones">
+<h1>Conclusiones<a class="headerlink" href="#conclusiones" title="Link to this heading">#</a></h1>
+<p>Este capítulo resume lo que los 140 modelos permiten afirmar sobre el problema de Home Credit. Cada
+apartado indica el capítulo del que salen las cifras; todas se refieren a la variable <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> y, salvo
+que se diga otra cosa, al AUC-ROC sobre la partición de prueba (61,503 solicitudes que ningún modelo
+vio durante el estudio) o al AUC externo medio de la validación cruzada anidada 5 × 3.</p>
+<section id="que-modelo-ordena-mejor-el-riesgo">
+<h2>1. ¿Qué modelo ordena mejor el riesgo?<a class="headerlink" href="#que-modelo-ordena-mejor-el-riesgo" title="Link to this heading">#</a></h2>
+<p><em>Fuente: capítulos 06 y 09.</em> <strong>XGBoost</strong>, sin ambigüedad. Su mejor combinación (sin balanceo,
+optimizador genético) alcanza un AUC de <strong>0.7754</strong> en la prueba, con un intervalo de confianza del
+95 % BCa de [0.7685, 0.7816], y de 0.7721 ± 0.0038 en la validación cruzada. Supera al segundo y al
+tercer modelo, SVM (0.7595) y la logística (0.7597), por unas 0.016 de AUC, con p de Holm &lt; 0.0001
+según DeLong y un tamaño de efecto grande (delta de Cliff ≈ 0.58 sobre los bloques), y es el primero
+del diagrama de diferencia crítica con un rango medio de 1.04 entre 7 modelos.</p>
+<p>Frente a la línea base logística del entregable anterior (AUC 0.7603 sobre la misma prueba), XGBoost
+gana <strong>+0.0151</strong> con un intervalo [0.0119, 0.0179] que excluye el cero. La logística optimizada de
+este entregable no mejora a la línea base (0.7597): la búsqueda de hiperparámetros encontró la misma
+región (penalización L1 con C entre 0.013 y 0.018, frente al C = 0.01 de la línea base), lo que
+confirma que la línea base ya estaba bien ajustada y que la ganancia viene del cambio de familia de
+modelos, no de la optimización.</p>
+<p>El orden completo en la prueba es XGBoost (0.775), logística y SVM (0.760), Random Forest (0.754),
+árbol (0.702), KNN (0.698) y Naive Bayes (0.648). Entre SVM, logística y Random Forest, y entre árbol
+y KNN, las diferencias no son significativas (capítulo 09, sección 3).</p>
+</section>
+<section id="que-aportan-el-balanceo-y-el-umbral">
+<h2>2. ¿Qué aportan el balanceo y el umbral?<a class="headerlink" href="#que-aportan-el-balanceo-y-el-umbral" title="Link to this heading">#</a></h2>
+<p><em>Fuente: capítulo 06, secciones 5 y 6.</em> <strong>El balanceo no mejora el ordenamiento; con sobremuestreo lo
+empeora.</strong> SMOTE y ADASYN bajan el AUC en seis de las siete familias, entre 0.013 (logística y SVM) y
+0.048 (Naive Bayes), y solo en XGBoost el efecto es despreciable (−0.001). <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> deja el AUC
+prácticamente igual en todas las familias. La predicción teórica de invariancia se cumple: en Naive
+Bayes y KNN la diferencia de AUC con <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> no supera 0.0011 y no es significativa.</p>
+<p>Lo que sí importa para el negocio es el <strong>umbral</strong>. Elegido por coste en la validación interna, lleva a
+todas las técnicas a puntos de operación parecidos: el XGBoost final detecta el 66.7 % de los
+incumplidores en la prueba (recall) con una precisión del 18.7 %. Balancear no aporta recall
+adicional que no se obtenga moviendo el umbral.</p>
+<p>El balanceo sí tiene un <strong>coste en calibración</strong>: la logística y Random Forest con <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>
+llegan con un ECE de 0.34 y 0.27, porque entrenaron con las clases igualadas. Naive Bayes llega
+descalibrado por su propio supuesto de independencia (ECE 0.34). La recalibración con predicciones
+fuera de muestra lo corrige (ECE de 0.001 a 0.006); la regresión isotónica es la opción segura, porque
+Platt empeora a los modelos que ya estaban calibrados (XGBoost pasa de 0.004 a 0.021).</p>
+</section>
+<section id="que-metodo-de-optimizacion-conviene-y-por-que">
+<h2>3. ¿Qué método de optimización conviene y por qué?<a class="headerlink" href="#que-metodo-de-optimizacion-conviene-y-por-que" title="Link to this heading">#</a></h2>
+<p><em>Fuente: capítulo 04.</em> Con 20 evaluaciones por optimizador, <strong>el método no cambia el resultado</strong>: las
+medias de AUC externo por método difieren en unas 0.002, por debajo de la variabilidad entre pliegues,
+y en el AUC externo el orden de los métodos incluso se invierte (la rejilla tiene el mejor rango medio).
+Las diferencias están en la eficiencia de la búsqueda. Por área bajo la curva de brecha al mejor
+conocido, la búsqueda aleatoria y la genética son las más eficientes (ABCB 0.0048), la bayesiana es la
+que termina más cerca del óptimo (brecha final 0.0009) y la más estable entre semillas (desviación
+0.0002 en el estudio de convergencia), y la rejilla es claramente la peor (ABCB 0.0136; efecto pequeño
+a mediano frente a las otras). Las diferencias entre los tres métodos no exhaustivos son de tamaño
+insignificante (delta de Cliff ≤ 0.04). Por minuto de cómputo, la búsqueda aleatoria es tan buena como
+cualquiera.</p>
+<p>El genético pierde diversidad pronto (por debajo de 0.1 en dos de tres semillas) sin que eso produzca
+un estancamiento perjudicial. Successive Halving no compensó: con el coste de 4 entrenamientos
+completos obtuvo 0.7662, peor que Random Search con el mismo coste (0.7677), porque con ~4,900 filas el
+orden de las configuraciones de XGBoost no se conserva. Por último, el AUC interno del ganador resultó
+ligeramente <em>menor</em> que el externo (−0.0015 a −0.003): los modelos internos aprenden con dos tercios de
+los datos, y ese efecto supera al sesgo de selección.</p>
+<p><strong>Recomendación:</strong> búsqueda aleatoria cuando el presupuesto es pequeño y el coste por evaluación
+variable; bayesiana cuando importa la estabilidad del resultado final; rejilla, nunca en espacios de
+más de dos o tres dimensiones.</p>
+</section>
+<section id="que-optimizaciones-computacionales-fueron-decisivas">
+<h2>4. ¿Qué optimizaciones computacionales fueron decisivas?<a class="headerlink" href="#que-optimizaciones-computacionales-fueron-decisivas" title="Link to this heading">#</a></h2>
+<p><em>Fuente: capítulo 05 y anexo A.</em> Las decisivas fueron <strong>cambios de algoritmo</strong>, no de hardware:</p>
+<ul class="simple">
+<li><p><strong>Parada temprana en XGBoost</strong>: 3.8 veces más rápida y +0.011 de AUC.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">hist</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">exact</span></code></strong>: 3.0 veces más rápido, mismo AUC.</p></li>
+<li><p><strong>Nystroem + modelo lineal en lugar de SVC con núcleo RBF</strong>: 54 veces más rápido con 16,000 filas;
+el SVC exacto escala con exponente 2.2 y tardaría ~4 horas por ajuste con los datos completos.</p></li>
+<li><p><strong>PCA + búsqueda vectorizada en KNN</strong>: entre 7 y 13 veces más rápida por consulta y, además, +0.048 de
+AUC, porque en ~600 dimensiones las distancias pierden significado.</p></li>
+<li><p><strong>La matriz de Gram en Lasso</strong> (37 veces) y <strong><code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> en Naive Bayes</strong> (−58 % de memoria).</p></li>
+</ul>
+<p>La GPU aportó 2.0 veces en XGBoost y 2.2 en el bosque aleatorio: útil, pero su memoria de 6 GB fue
+también el origen de los fallos del estudio. El perfilamiento mostró que el balanceo es una fracción
+modesta de cada evaluación (~9 % con SMOTE), pero que calcularlo una sola vez por partición y
+compartirlo entre los cuatro optimizadores evita 79 de cada 80 repeticiones. Dos «optimizaciones» de la
+guía no lo fueron en este problema: SAGA es 38 a 150 veces más lento que lbfgs y Cholesky con datos
+densos y p moderado, y es la causa de que la logística L1 consumiera casi una quinta parte de todo el
+cómputo del estudio.</p>
+</section>
+<section id="clasificadores-y-regresores-sobre-el-mismo-objetivo">
+<h2>5. Clasificadores y regresores sobre el mismo objetivo<a class="headerlink" href="#clasificadores-y-regresores-sobre-el-mismo-objetivo" title="Link to this heading">#</a></h2>
+<p><em>Fuente: capítulos 03, 07 y 09 (sección 5).</em> La equivalencia teórica se cumple. Entrenados sobre
+<code class="docutils literal notranslate"><span class="pre">TARGET</span></code> con error cuadrático, el árbol y KNN regresores dan <strong>exactamente</strong> el mismo AUC que sus
+contrapartes de clasificación (0.7017 y 0.6975 en la prueba), y Random Forest es indistinguible
+(−0.0002, p = 0.85). En XGBoost el clasificador supera al regresor por 0.0017 (p = 0.058), en el
+límite de la significación: la log-verosimilitud se ajusta algo mejor a un objetivo binario. Lasso
+(0.7604) iguala en la prueba a la logística. La excepción es <strong>SVR</strong>: su pérdida ε-insensible produce
+predicciones prácticamente constantes (alrededor de 0.30), R² negativo y un RMSE peor que predecir la
+tasa base, aunque conserva algo de orden (AUC 0.666).</p>
+<p>Las métricas propias de regresión confirman que, con un objetivo binario, <strong>el AUC es el criterio que
+importa</strong>. El MAE premia predecir siempre 0 (ningún modelo lo supera); el R² del mejor modelo es 0.10,
+lo esperable para un evento del 8 %, y no contradice un AUC de 0.77; y las pruebas de White y
+Jarque-Bera rechazan por construcción, porque el residuo solo toma dos valores por observación. Las
+pruebas informativas, BDS y Ljung-Box, no encuentran dependencia en el orden de <code class="docutils literal notranslate"><span class="pre">SK_ID_CURR</span></code>. En el
+MCS sobreviven solo dos regresores, ambos XGBoost, y Diebold-Mariano confirma su ventaja sobre Lasso y
+Ridge con un efecto real pero pequeño por observación. El SPA de Hansen y el Reality Check de White
+descartan que esa ventaja sea un artefacto de haber probado 28 modelos (p &lt; 0.001 frente al mejor
+modelo lineal), y el StepM muestra que solo los cuatro XGBoost y, por muy poco, un Random Forest
+superan de forma genuina al modelo lineal. El ajuste en los tres conjuntos confirma además que,
+aunque XGBoost, Random Forest y KNN memorizan parte del entrenamiento, su AUC de validación y de
+prueba coinciden, de modo que las estimaciones fuera de muestra son fiables.</p>
+</section>
+<section id="que-explica-el-riesgo">
+<h2>6. ¿Qué explica el riesgo?<a class="headerlink" href="#que-explica-el-riesgo" title="Link to this heading">#</a></h2>
+<p><em>Fuente: capítulo 08.</em> El puntaje externo <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_2</span></code> es, con diferencia, la variable más
+influyente, con un efecto monótono: puntajes bajos elevan el riesgo. Le siguen variables de historial
+construidas en la Fase 3 —deuda relativa y mora máxima en la central de riesgo, pagos tardíos de cuotas
+anteriores, solicitudes rechazadas en el pasado— y variables de capacidad de pago y perfil (anualidad,
+antigüedad laboral, edad, sexo, estado civil, educación). Es el mismo cuadro que trazó el EDA, salvo
+por una ausencia: <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_1</span></code> y <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_3</span></code>, que el embudo de la Fase 3.5 excluyó por cobertura
+insuficiente (43.6 % y 80.2 %, por debajo del umbral de 85 %).</p>
+<p>Los casos locales muestran el límite del modelo. El incumplidor con el puntaje más alto reunía casi
+todas las señales de riesgo a la vez; el incumplidor con el puntaje más bajo tenía el perfil de un
+cliente seguro en todas sus variables, de modo que ningún modelo sobre estos datos podía anticiparlo.
+LIME coincidió poco con SHAP (1-2 variables comunes entre las 10 principales) y su modelo local explica
+solo el 20 % del comportamiento en el vecindario: para modelos de árboles, SHAP es la explicación a
+usar.</p>
+</section>
+<section id="limitaciones">
+<h2>7. Limitaciones<a class="headerlink" href="#limitaciones" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Optimismo residual del EDA.</strong> El conjunto de variables se diseñó en el EDA mirando <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> sobre
+todas las filas de entrenamiento. La validación anidada protege la selección de hiperparámetros, pero
+no esa etapa previa.</p></li>
+<li><p><strong>Desplazamiento entre particiones.</strong> Tras el embudo de estabilidad, la validación adversarial entre
+<code class="docutils literal notranslate"><span class="pre">application_train</span></code> y <code class="docutils literal notranslate"><span class="pre">application_test</span></code> sigue en un AUC de 0.82 (capítulo 01). La evaluación sobre la
+prueba interna, extraída de <code class="docutils literal notranslate"><span class="pre">train</span></code>, puede ser optimista respecto del comportamiento sobre la
+población de <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p></li>
+<li><p><strong>Variables excluidas.</strong> La exclusión por cobertura de <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_1</span></code>, <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_3</span></code> y de toda la
+tabla <code class="docutils literal notranslate"><span class="pre">credit_card_balance</span></code> protege la comparabilidad entre particiones, pero probablemente cuesta
+capacidad predictiva: los modelos basados en árboles manejan los valores faltantes de forma nativa.</p></li>
+<li><p><strong>Bloques no independientes.</strong> Los 50 bloques de Friedman y Nemenyi se forman dividiendo los 5
+pliegues externos, y los de un mismo pliegue comparten los modelos entrenados; la inferencia es algo
+liberal y por eso se complementa con DeLong sobre la prueba.</p></li>
+<li><p><strong>Sin orden temporal.</strong> Home Credit no registra fechas, de modo que BDS, Ljung-Box, Giacomini-White y
+Diebold-Mariano se aplican sobre el orden de <code class="docutils literal notranslate"><span class="pre">SK_ID_CURR</span></code>, no sobre un orden temporal real.</p></li>
+<li><p><strong>Presupuesto de búsqueda.</strong> 20 evaluaciones por optimizador bastan para comparar familias, pero no
+para agotar el potencial de XGBoost, que en el estudio de convergencia siguió ganando milésimas hasta
+las 30-40 evaluaciones.</p></li>
+<li><p><strong>Hardware.</strong> Algunas configuraciones de Random Forest no cupieron en los 6 GB de la GPU y se
+evaluaron después en la CPU; ninguna resultó ganadora (anexo A).</p></li>
+</ul>
+</section>
+<section id="referencia-externa-y-trabajo-futuro">
+<h2>8. Referencia externa y trabajo futuro<a class="headerlink" href="#referencia-externa-y-trabajo-futuro" title="Link to this heading">#</a></h2>
+<p>Como referencia, las soluciones ganadoras de la competencia de Home Credit en Kaggle alcanzaron un AUC
+cercano a 0.80 en su tabla privada, con cientos de variables construidas a mano y conjuntos de modelos.
+La comparación no es directa: esa cifra se mide sobre <code class="docutils literal notranslate"><span class="pre">application_test</span></code>, con otras variables y otro
+protocolo. Aun así, sitúa el resultado de este proyecto (0.775 en una prueba interna) como competitivo
+para un modelo único sin ingeniería de variables específica, y señala dónde está el margen de mejora:</p>
+<ol class="arabic simple">
+<li><p><strong>Recuperar información excluida</strong>, en particular <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_1</span></code>, <code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_3</span></code> y
+<code class="docutils literal notranslate"><span class="pre">credit_card_balance</span></code>, tratando el desplazamiento entre particiones de otra forma (por ejemplo,
+indicadores de disponibilidad en lugar de exclusión).</p></li>
+<li><p><strong>Ingeniería de variables</strong> sobre los puntajes externos y el historial: razones, interacciones como
+<code class="docutils literal notranslate"><span class="pre">EXT_SOURCE_2</span> <span class="pre">×</span> <span class="pre">EXT_SOURCE_3</span></code> y ventanas temporales.</p></li>
+<li><p><strong>Otros modelos de boosting y combinaciones</strong>: LightGBM y CatBoost, y un <em>stacking</em> sobre las
+predicciones fuera de muestra que el estudio ya guarda para los 140 modelos.</p></li>
+<li><p><strong>Más presupuesto de búsqueda para XGBoost</strong>, con búsqueda aleatoria o bayesiana y parada temprana.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="09_comparacion_estadistica.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Robustez y comparación estadística</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="A1_ejecucion_del_estudio.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Anexo A. Ejecución del estudio: bitácora, fallos y reparaciones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-modelo-ordena-mejor-el-riesgo">1. ¿Qué modelo ordena mejor el riesgo?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-aportan-el-balanceo-y-el-umbral">2. ¿Qué aportan el balanceo y el umbral?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-metodo-de-optimizacion-conviene-y-por-que">3. ¿Qué método de optimización conviene y por qué?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-optimizaciones-computacionales-fueron-decisivas">4. ¿Qué optimizaciones computacionales fueron decisivas?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificadores-y-regresores-sobre-el-mismo-objetivo">5. Clasificadores y regresores sobre el mismo objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-explica-el-riesgo">6. ¿Qué explica el riesgo?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitaciones">7. Limitaciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencia-externa-y-trabajo-futuro">8. Referencia externa y trabajo futuro</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Jesús David Barrios Valdes, Samuel David Chamorro Solorzano y Jacobo Londoño Baquero
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
