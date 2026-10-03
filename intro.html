@@ -536,7 +536,7 @@ automáticamente o con la variable de entorno <code class="docutils literal notr
 <h2>Cómo se ejecuta<a class="headerlink" href="#como-se-ejecuta" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Instalar el entorno: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> (Python 3.10 o 3.12) y, para el KNN en la
-GPU, PyTorch con CUDA (<code class="docutils literal notranslate"><span class="pre">INSTALAR_GPU.bat</span></code>).</p></li>
+GPU, PyTorch con CUDA (opcional: sin GPU se usa FAISS en la CPU, con los mismos vecinos).</p></li>
 <li><p>Comprobar el entorno: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">verificar_entorno.py</span></code> (versiones, GPU, espacio en disco).</p></li>
 <li><p>Ejecutar <strong>completo</strong> el capítulo 01 en un kernel limpio. Su última sección guarda el conjunto de
 modelado en <code class="docutils literal notranslate"><span class="pre">datos/</span></code>.</p></li>
@@ -548,8 +548,8 @@ también son reanudables.</p></li>
 <li><p>Construir el libro: <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">.</span></code> (los notebooks no se re-ejecutan al construir).</p></li>
 </ol>
 <p>En la práctica, el estudio de los capítulos 02 y 03 suma cientos de horas, y se ejecutó fuera de Jupyter
-con el mismo código: <code class="docutils literal notranslate"><span class="pre">correr_estudio.py</span></code>, lanzado desde los archivos <code class="docutils literal notranslate"><span class="pre">CORRER_*.bat</span></code> en varias ventanas a la
-vez, guarda cada unidad en disco; después, <code class="docutils literal notranslate"><span class="pre">correr_capitulos.py</span></code> (<code class="docutils literal notranslate"><span class="pre">CORRER_CAPITULOS.bat</span></code>) repara las
+con el mismo código: <code class="docutils literal notranslate"><span class="pre">correr_estudio.py</span> <span class="pre">--grupo</span> <span class="pre">&lt;gpu|cpu|...&gt;</span></code>, lanzado en varias ventanas a la vez,
+guarda cada unidad en disco; después, <code class="docutils literal notranslate"><span class="pre">correr_capitulos.py</span></code> repara las
 evaluaciones fallidas, ejecuta los capítulos 01 a 09 de arriba abajo en un kernel nuevo y compila el libro.
 Como las unidades ya están en disco, los capítulos 02 y 03 las encuentran hechas y muestran los resultados
 que produce su propio código. El anexo A documenta esa ejecución.</p>

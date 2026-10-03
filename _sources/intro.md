@@ -58,7 +58,7 @@ desarrolla las consecuencias teóricas de esta decisión.
 ## Cómo se ejecuta
 
 1. Instalar el entorno: `pip install -r requirements.txt` (Python 3.10 o 3.12) y, para el KNN en la
-   GPU, PyTorch con CUDA (`INSTALAR_GPU.bat`).
+   GPU, PyTorch con CUDA (opcional: sin GPU se usa FAISS en la CPU, con los mismos vecinos).
 2. Comprobar el entorno: `python verificar_entorno.py` (versiones, GPU, espacio en disco).
 3. Ejecutar **completo** el capítulo 01 en un kernel limpio. Su última sección guarda el conjunto de
    modelado en `datos/`.
@@ -70,8 +70,8 @@ desarrolla las consecuencias teóricas de esta decisión.
 6. Construir el libro: `jupyter-book build .` (los notebooks no se re-ejecutan al construir).
 
 En la práctica, el estudio de los capítulos 02 y 03 suma cientos de horas, y se ejecutó fuera de Jupyter
-con el mismo código: `correr_estudio.py`, lanzado desde los archivos `CORRER_*.bat` en varias ventanas a la
-vez, guarda cada unidad en disco; después, `correr_capitulos.py` (`CORRER_CAPITULOS.bat`) repara las
+con el mismo código: `correr_estudio.py --grupo <gpu|cpu|...>`, lanzado en varias ventanas a la vez,
+guarda cada unidad en disco; después, `correr_capitulos.py` repara las
 evaluaciones fallidas, ejecuta los capítulos 01 a 09 de arriba abajo en un kernel nuevo y compila el libro.
 Como las unidades ya están en disco, los capítulos 02 y 03 las encuentran hechas y muestran los resultados
 que produce su propio código. El anexo A documenta esa ejecución.
